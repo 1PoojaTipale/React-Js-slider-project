@@ -5,6 +5,9 @@ import App from './App';
 import Home from './screen/Home';
 import Login from './screen/Login';
 import  Register  from './screen/Register';
+import  ProductInformation  from './screen/ProductInformation';
+import  About  from './screen/About';
+import Contact  from './screen/Contact';
 import  Notfound  from './screen/Notfound';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -22,6 +25,9 @@ const routing=(
 <Route exact path="/" component={Home}/> 
     <Route  path="/login" component={Login}/> 
     <Route  path="/register" component={Register}/>
+    <Route  path="/about" component={About}/>
+    <Route  path="/contact" component={Contact}/>
+    <Route  path="/productinformation" component={ProductInformation}/>
     <Route component={Notfound}/> 
 </Switch>
   </BrowserRouter>
