@@ -8,6 +8,7 @@ import  Register  from './screen/Register';
 import  ProductInformation  from './screen/ProductInformation';
 import  About  from './screen/About';
 import Contact  from './screen/Contact';
+import Mycart  from './screen/Mycart';
 import  Notfound  from './screen/Notfound';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -28,6 +29,7 @@ const routing=(
     <Route  path="/about" component={About}/>
     <Route  path="/contact" component={Contact}/>
     <Route  path="/productinformation" component={ProductInformation}/>
+    <Route  path="/Mycart" component={Mycart}/>
     <Route component={Notfound}/> 
 </Switch>
   </BrowserRouter>
