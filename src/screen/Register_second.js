@@ -1,6 +1,6 @@
 import  React,{useState}  from 'react'
 import NavbarComponent from '../components/NavbarComponent';
-
+import  {Function_registerAPI} from './API2';
 
 export default  function Register_second(){
 
@@ -21,7 +21,7 @@ export default  function Register_second(){
     //     changeMyPassword(e.target.value) ;
     // }
 
-        const[values,setValues]=useState
+        const[myvalues,setValues]=useState
         (
             {
             name:'',
@@ -32,15 +32,42 @@ export default  function Register_second(){
             }
         );
 
+        const[datafromBackend,updatedatafromBackendadd]=useState();
 
-        const{ name, email,password,error,success}=values;
+        const{ name, email,password,error,success}=myvalues;
 
             const handleChange=inputtype_name=>event=>
             {
-                setValues( {...values,[inputtype_name]:event.target.value } );
+                setValues( {...myvalues,[inputtype_name]:event.target.value } );
                
             };
         
+
+
+            const  onSubmit =event=>
+            {
+                event.preventDefault();
+                setValues({...myvalues,error:false});
+                Function_registerAPI({name,email,password})
+                .then(data=>{
+                    if(data.error)
+                    {
+                        setValues({...myvalues,error:data.error,success:false});
+                    }
+                    else{
+                        updatedatafromBackendadd(data);
+                        console.log(data);
+                        setValues({
+                            ...myvalues,
+                            name:"",
+                            email:"",
+                            password:"",
+                            error:false,
+                            success:true
+                        });
+                    }
+                })
+            };
 
 
 
@@ -70,7 +97,7 @@ export default  function Register_second(){
          <input type="password" onKeyUp={handleChange("password")}  placeholder="Enter Your Password"required className="form-control"/>
      </div>
      <div className="form-group">
-        <button className="btn btn-danger mx-auto d-block"> Register</button>
+        <button onClick={onSubmit}  className="btn btn-danger mx-auto d-block"> Register</button>
         </div>
  </div>
      <div className="col-lg-4">
@@ -78,9 +105,12 @@ export default  function Register_second(){
             <ul>
             <li> Name:{name}</li>        
             <li> Email:{email}</li>        
-            <li> Password:{password}</li>        
+            <li> Password:{password}</li>   
+             </ul>
 
-            </ul>
+             <p>
+                Data From Backend: {JSON.stringify(updatedatafromBackendadd)}
+                 </p> 
      </div>
              </div>
 
