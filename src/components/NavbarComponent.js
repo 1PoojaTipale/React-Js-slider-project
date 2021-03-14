@@ -33,6 +33,7 @@ function NavbarComponent()
             <Link className={"nav-link "  + MyActiveClass("/register")} to="register">Register</Link>
             <Link className={"nav-link "   + MyActiveClass("/About")} to="/About">About Us</Link>
             <Link className={"nav-link "  + MyActiveClass("/contact")} to="/contact">Contact Us</Link>
+            <Link className={"nav-link "  + MyActiveClass("/register_second")} to="/register_second">Register Next</Link>
             </Nav>
             
   </Navbar.Collapse>
